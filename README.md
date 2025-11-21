@@ -2,6 +2,19 @@
 ST0263 – Tópicos Especiales en Telemática – 2025-2  
 Universidad EAFIT  
 
+## Se logró:
+
+Ingesta desde API
+
+Ingesta desde RDS
+
+Data Lake RAW
+
+Pipeline ETL Spark
+
+Arquitectura reproducible
+
+Scripts automatizados
 
 ## 1. Descripción General
 
