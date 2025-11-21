@@ -208,18 +208,37 @@ trusted/hospital_departamento
 ## 8. Estructura del Repositorio
 
 ```
-Proyecto3_sistemas_distribuidos/
+PROYECTO3_SISTEMAS_DISTRIBUIDOS/
 │
-├── ingestion/
-│   ├── export_rds_to_s3.py
-│   └── download_covid_api.py
+├── analytics_spark/
+│   └── analytics_covid.py            # Script Spark para análisis con EMR
+│
+├── api/
+│   └── lambda_athena_query.py        # Lambda para ejecutar consultas en Athena
+│
+├── env/                              # Entorno virtual (NO se sube a GitHub)
+│   ├── Include/
+│   ├── Lib/
+│   └── Scripts/
 │
 ├── etl_spark/
-│   └── etl_raw_to_trusted.py
+│   ├── etl_covid_join.py             # Join final de tablas transformadas
+│   └── etl_raw_to_trusted.py         # Limpieza y formateo de datos RAW → TRUSTED
 │
-├── screenshots/        # opcional
+├── infra/
+│   (Aquí se documentan los recursos creados en AWS: RDS, EC2, EMR, roles IAM, etc.)
 │
-└── README.md
+├── ingestion/
+│   ├── download_covid_api.py         # Descarga datos de la API pública
+│   ├── download_covid_files.py       # Descarga de archivos adicionales (si aplica)
+│   └── export_rds_to_s3.py           # Exporta tablas de RDS hacia S3
+│
+├── download_covid_api.py             # Versión principal usada durante pruebas
+│
+├── .gitignore
+│
+└── README.md                         # Este documento
+
 ```
 
 ## 9. Datos del Estudiante
