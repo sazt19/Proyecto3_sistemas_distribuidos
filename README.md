@@ -28,9 +28,13 @@ La solución cumple los requerimientos del proyecto institucional de AWS Data En
 ## 2. Arquitectura del Sistema
 
 API COVID → EC2 (Python) → S3 Raw/covid_api
+
 RDS MySQL → EC2 (Python) → S3 Raw/rds
+
 S3 RAW → EMR Spark Steps → S3 TRUSTED
+
 S3 TRUSTED → Spark SQL / Spark ML → S3 REFINED (Opcional)
+
 S3 REFINED → Athena / API Gateway (Opcional)
 
 Servicios utilizados:
@@ -82,7 +86,7 @@ https://disease.sh/v3/covid-19/historical/Colombia?lastdays=all
 * Lo sube a:
 
 ```
-s3://<TU_BUCKET>/raw/covid_api/<timestamp>.json
+s3://st0263-covid-sazu/raw/covid_api/<timestamp>.json
 ```
 
 ### Ejecución:
@@ -131,7 +135,7 @@ s3://st0263-covid-sazu/trusted/poblacion/
    * Script:
 
      ```
-     s3://<TU_BUCKET>/etl/etl_raw_to_trusted.py
+     s3://st0263-covid-sazu/etl/etl_raw_to_trusted.py
      ```
    * Deploy mode: `cluster`
 
@@ -188,7 +192,7 @@ python3 ingestion/download_covid_api.py
 Agregar Step en EMR:
 
 ```
-spark-submit --deploy-mode cluster s3://<TU_BUCKET>/etl/etl_raw_to_trusted.py
+spark-submit --deploy-mode cluster s3://st0263-covid-sazu/etl/etl_raw_to_trusted.py
 ```
 
 ### 6️⃣ Confirmar salida en TRUSTED
@@ -203,6 +207,7 @@ trusted/hospital_departamento
 
 ## 8. Estructura del Repositorio
 
+```
 Proyecto3_sistemas_distribuidos/
 │
 ├── ingestion/
@@ -215,7 +220,7 @@ Proyecto3_sistemas_distribuidos/
 ├── screenshots/        # opcional
 │
 └── README.md
-
+```
 
 ## 9. Datos del Estudiante
 
